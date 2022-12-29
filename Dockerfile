@@ -6,4 +6,4 @@ USER root
 RUN git clone https://github.com/MyEcoria/dogeBet.git dogebet
 WORKDIR /root/dogebet
 RUN npm install
-ENTRYPOINT node server.js
+ENTRYPOINT node index.js
