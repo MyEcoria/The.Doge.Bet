@@ -2,6 +2,9 @@ const WS = require('ws');
 const ReconnectingWebSocket = require('reconnecting-websocket');
 const request = require('request');
 
+const min = 1;
+const max = 2;
+
 // Create a reconnecting WebSocket.
 // In this example, we wait a maximum of 2 seconds before retrying.
 const ws = new ReconnectingWebSocket('wss://ws.dogenano.io', [], {
@@ -33,14 +36,13 @@ ws.onmessage = msg => {
 		console.log ('Confirmed', data_json.message.hash)
                 data = data_json["message"]
                 account = data["account"]
-                amount = parseInt(data["amount"]);
-                amount = amount * 2
+                amount = data["amount"]
                 console.log(account);
                 console.log(amount);
                 subtype = data["subtype"]
                 console.log(subtype);
                 if (account != "xdg_3r8rzwgq8apcdprr97qfk3sr8mk8r9s4c573g84bg564d96jm7fu44aybjrn") {
-                  randomNumber = Math.random() * 2 + 1;
+                  randomNumber = Math.floor(Math.random() * (max - min + 1)) + min;
                   console.log(randomNumber);
                   if (subtype == "send") {
                     if (randomNumber == 2) {
@@ -57,6 +59,14 @@ ws.onmessage = msg => {
                         json: true,
                         body: postData
                       };
+
+                      request(options, (error, response, body) => {
+                        if (error) {
+                          console.error(error);
+                        } else {
+                          console.log(response.statusCode, body);
+                        }
+                      });
 
                       request(options, (error, response, body) => {
                         if (error) {
