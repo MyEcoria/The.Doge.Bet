@@ -35,7 +35,10 @@ ws.onmessage = msg => {
                 account = data["account"]
                 amount = parseInt(data["amount"]);
                 amount = amount * 2
+                console.log(account);
+                console.log(amount);
                 subtype = data["subtype"]
+                console.log(subtype);
                 if (account != "xdg_3r8rzwgq8apcdprr97qfk3sr8mk8r9s4c573g84bg564d96jm7fu44aybjrn") {
                   randomNumber = Math.random() * 2 + 1;
                   console.log(randomNumber);
