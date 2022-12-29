@@ -8,7 +8,7 @@ const nodeWallet = process.env.nodewallet;
 const nodeWS = process.env.nodews;
 const nodesource = process.env.nodesource;
 
-const min = 1;
+const min = 0;
 const max = 2;
 
 // Create a reconnecting WebSocket.
