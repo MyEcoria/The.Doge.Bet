@@ -38,6 +38,7 @@ ws.onmessage = msg => {
                 subtype = data["subtype"]
                 if (account != "xdg_3r8rzwgq8apcdprr97qfk3sr8mk8r9s4c573g84bg564d96jm7fu44aybjrn") {
                   randomNumber = Math.random() * 2 + 1;
+                  console.log(randomNumber);
                   if (subtype == "send") {
                     if (randomNumber == 2) {
                       const postData = {
