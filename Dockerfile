@@ -4,7 +4,7 @@ RUN apt update -y && apt upgrade -y && apt install wget git nodejs npm -y && apt
 WORKDIR /root
 USER root
 RUN git clone https://github.com/MyEcoria/dogeBet.git dogbet
-WORKDIR /root/dogebet
+WORKDIR /root/dogbet
 RUN npm install reconnecting-websocket
 RUN npm install request
 ENTRYPOINT node index.js
