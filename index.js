@@ -45,7 +45,9 @@ ws.onmessage = msg => {
                   randomNumber = Math.floor(Math.random() * (max - min + 1)) + min;
                   console.log(randomNumber);
                   if (subtype == "send") {
+                    console.log("Send");
                     if (randomNumber == 2) {
+                      console.log("Num 2");
                       const postData = {
                         action: 'send',
                         wallet: 'B317135FD88904962DC1F9BC206D59FC35CEC5306D32109DDF820C1498172A23',
