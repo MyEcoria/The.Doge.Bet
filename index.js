@@ -2,12 +2,18 @@ const WS = require('ws');
 const ReconnectingWebSocket = require('reconnecting-websocket');
 const request = require('request');
 
+// Variables d'environnement
+const nodeRPC = process.env.noderpc;
+const nodeWallet = process.env.nodewallet;
+const nodeWS = process.env.nodews;
+const nodesource = process.env.nodesource;
+
 const min = 1;
 const max = 2;
 
 // Create a reconnecting WebSocket.
 // In this example, we wait a maximum of 2 seconds before retrying.
-const ws = new ReconnectingWebSocket('wss://ws.dogenano.io', [], {
+const ws = new ReconnectingWebSocket(nodeWS, [], {
 	WebSocket: WS,
 	connectionTimeout: 1000,	
 	maxRetries: 100000,
@@ -20,7 +26,7 @@ ws.onopen = () => {
 	const confirmation_subscription = {
 		"action": "subscribe", 
 		"topic": "confirmation",
-                "options": { "accounts": ["xdg_3r8rzwgq8apcdprr97qfk3sr8mk8r9s4c573g84bg564d96jm7fu44aybjrn"] }
+                "options": { "accounts": [nodesource] }
 	}
 	ws.send(JSON.stringify(confirmation_subscription));
 
@@ -41,7 +47,7 @@ ws.onmessage = msg => {
                 console.log(amount);
                 subtype = data_json.message.block.subtype
                 console.log(subtype);
-                if (account != "xdg_3r8rzwgq8apcdprr97qfk3sr8mk8r9s4c573g84bg564d96jm7fu44aybjrn") {
+                if (account != nodesource) {
                   randomNumber = Math.floor(Math.random() * (max - min + 1)) + min;
                   console.log(randomNumber);
                   if (subtype == "send") {
@@ -50,13 +56,13 @@ ws.onmessage = msg => {
                       console.log("Num 2");
                       const postData = {
                         action: 'send',
-                        wallet: 'B317135FD88904962DC1F9BC206D59FC35CEC5306D32109DDF820C1498172A23',
-                        source: 'xdg_3r8rzwgq8apcdprr97qfk3sr8mk8r9s4c573g84bg564d96jm7fu44aybjrn',
+                        wallet: nodeWallet,
+                        source: nodesource,
                         destination: account,
                         amount: amount
                       };
                       const options = {
-                        url: 'http://server.myecoria.com:7030',
+                        url: nodeRPC,
                         method: 'POST',
                         json: true,
                         body: postData
