@@ -39,8 +39,7 @@ ws.onmessage = msg => {
                 amount = data["amount"]
                 console.log(account);
                 console.log(amount);
-                subtype = data["block"]
-                subtype = data["subtype"]
+                subtype = data_json.message.block.subtype
                 console.log(subtype);
                 if (account != "xdg_3r8rzwgq8apcdprr97qfk3sr8mk8r9s4c573g84bg564d96jm7fu44aybjrn") {
                   randomNumber = Math.floor(Math.random() * (max - min + 1)) + min;
