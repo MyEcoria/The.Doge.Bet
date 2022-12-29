@@ -13,7 +13,7 @@ const max = 2;
 
 // Create a reconnecting WebSocket.
 // In this example, we wait a maximum of 2 seconds before retrying.
-const ws = new ReconnectingWebSocket(nodeWS, [], {
+const ws = new ReconnectingWebSocket('wss://ws.dogenano.io', [], {
 	WebSocket: WS,
 	connectionTimeout: 1000,	
 	maxRetries: 100000,
