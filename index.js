@@ -26,7 +26,7 @@ ws.onopen = () => {
 
 // The node sent us a message
 ws.onmessage = msg => {
-	console.log(msg.data);
+	
 	data_json = JSON.parse(msg.data);
 
 	if (data_json.topic === "confirmation") {
