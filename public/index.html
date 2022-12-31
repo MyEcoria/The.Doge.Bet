@@ -1,0 +1,113 @@
+<html>
+  <head>
+    <title>The Doge Bet !</title>
+    <link rel="stylesheet" media="screen" href="https://fontlibrary.org//face/alphabutts-initials" type="text/css"/>
+    <link rel="stylesheet" media="screen" href="https://fontlibrary.org//face/uglytypist" type="text/css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <style>
+      body {
+        background-color: #87CEEB;
+      }
+      div.centre {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background-color: white;
+        border-radius: 20px;
+        text-align: center;
+      }
+
+      h1.titre {
+        font-family: 'AlphabuttsRegular';
+      }
+
+      hr.wave {
+        border: 0;
+        height: 1px;
+        background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0));
+        border-radius: 50%;
+        transition: all 0.5s ease-out;
+      }
+
+      hr.wave:hover {
+        border-radius: 0;
+      }
+
+      p.description {
+        font-family: 'UglyTypistRegular';
+        font-size: 20px;
+      }
+      #text-input {
+        background-color: white;
+        color: black;
+        border: 2px solid blue;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      }
+      .copy-button {
+        background-color: blue;
+        color: white;
+        border: 2px solid blue;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      }
+      @media (max-width: 767px) {
+        /* CSS pour les éléments à désactiver ici */
+        .qrcode {
+          display: none; /* Cache les éléments */
+        }
+      }
+
+      button {
+        outline: none;
+        border: none;
+        background: white;
+      }
+      i.fa-arrow-down {
+        font-size: 24px;
+        transform: rotate(0deg); /* Rotation initiale de l'icône */
+        transition: transform 1s; /* Animation de transition lorsque l'icône est modifiée */
+      }
+    </style>
+  </head>
+  <body>
+    <div class="centre">
+      <h1 class="titre">The Doge Bet !</h1>
+      <hr class="wave">
+      <p class="description">Send Dogenano to the address below by copying or scanning the qr code, a number between 1 and 2 will be generated, if it's 2 double your bet will be sent to you.</p>
+      <div>
+        <input type="text" id="text-input" value="xdg_1fie94e9jyh4i3dksto3iapc9saa557qicny9r9ydxp85a13jf8ah4z7jh97">
+        <button class="copy-button" onclick="copyText()">Copier</button>
+      </div>
+      <br>
+      <button onclick="toggleElement()"><i class="fas fa-arrow-down"></i></button>
+      <div id="element-a" style="display: none;"><br><img class="qrcode" src="https://api.qrserver.com/v1/create-qr-code/?data=nano:xdg_1fie94e9jyh4i3dksto3iapc9saa557qicny9r9ydxp85a13jf8ah4z7jh97"></div>
+      <br>
+      <br>
+    
+    
+
+      <script>
+      function copyText() {
+        // Sélectionne le texte dans l'input
+        var input = document.querySelector('input[type="text"]');
+        input.select();
+
+        // Copie le texte sélectionné
+        document.execCommand('copy');
+      }
+
+      function toggleElement() {
+        var element = document.getElementById('element-a');
+        var arrow = document.querySelector('i.fa-arrow-down');
+        if (element.style.display === 'block') {
+          element.style.display = 'none';
+          arrow.style.transform = 'rotate(0deg)';
+        } else {
+          element.style.display = 'block';
+          arrow.style.transform = 'rotate(180deg)';
+        }
+      }
+    </script>
+    </div>
+  </body>
+</html>
