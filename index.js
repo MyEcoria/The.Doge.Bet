@@ -2,6 +2,11 @@ const WS = require('ws');
 const ReconnectingWebSocket = require('reconnecting-websocket');
 const request = require('request');
 
+const express = require('express');
+
+const app = express();
+const port = 3003;
+
 // Variables d'environnement
 const nodeRPC = process.env.noderpc;
 const nodeWallet = process.env.nodewallet;
@@ -10,6 +15,14 @@ const nodesource = process.env.nodesource;
 
 const min = 0;
 const max = 2;
+
+app.get('/', (req, res) => {
+  res.sendFile(__dirname + '/public/index.html');
+});
+
+app.listen(port, () => {
+  console.log(`Le serveur écoute sur le port ${port}`);
+});
 
 // Create a reconnecting WebSocket.
 // In this example, we wait a maximum of 2 seconds before retrying.
