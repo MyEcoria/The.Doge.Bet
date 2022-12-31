@@ -6,7 +6,7 @@ Ce projet en Node.js vérifie les dépôts effectués à une adresse Dogenano. S
 Modifier le fichier `.env`
 
 1) `sudo docker build --no-cache -t bet:latest .`
-2) `sudo docker run --restart=unless-stopped --env-file .env -d --name dogebet bet:latest`
+2) `sudo docker run --restart=unless-stopped --env-file .env -d -p 3003:3003 --name dogebet bet:latest`
 
 # Contribution
 
