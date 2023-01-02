@@ -1,4 +1,4 @@
-# dogeBet
+# The Doge Bet 🎲
 Ce projet en Node.js vérifie les dépôts effectués à une adresse Dogenano. Si un dépôt est détecté, un nombre aléatoire compris entre 1 et 2 est généré. Si le nombre généré est égal à 2, le déposant recevra le double de la somme déposée.
 
 # Installation avec Docker
